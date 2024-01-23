@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Cat or Dog</string>
+    <string name="bitmap_description">Just a side app icon</string>
 </resources>
