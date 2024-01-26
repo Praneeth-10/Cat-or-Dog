@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Cat or Dog</string>
     <string name="bitmap_description">Just a side app icon</string>
+    <string name="hi_there">Hi There \uD83D\uDE0A !</string>
+    <string name="lets_learn_about">Let\'s learn about You !</string>
+    <string name="app_will_prepare">This app will prepare a details page based on input provided by you !</string>
 </resources>
