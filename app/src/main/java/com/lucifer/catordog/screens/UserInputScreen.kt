@@ -1,11 +1,17 @@
 package com.lucifer.catordog.screens
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.AccountBox
+import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -17,6 +23,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.lucifer.catordog.R
+import com.lucifer.catordog.components.AnimalCard
 import com.lucifer.catordog.components.TextComponent
 import com.lucifer.catordog.components.TextInputComponent
 import com.lucifer.catordog.components.TopAppBar
@@ -24,7 +31,10 @@ import com.lucifer.catordog.models.UserDataUiEvents
 import com.lucifer.catordog.viewModels.UserInputViewModel
 
 @Composable
-fun UserInputScreen(navController: NavController, userInputViewModel: UserInputViewModel = viewModel()) {
+fun UserInputScreen(
+    navController: NavController,
+    userInputViewModel: UserInputViewModel = viewModel()
+) {
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -50,10 +60,34 @@ fun UserInputScreen(navController: NavController, userInputViewModel: UserInputV
                 textSize = 20.sp
             )
 
-            Spacer(modifier = Modifier.size(60.dp))
+            Spacer(modifier = Modifier.size(50.dp))
 
-            TextInputComponent(labelName = "Enter Nam"){
+            TextInputComponent(labelName = "Enter Nam") {
                 userInputViewModel.onEventChanged(event = UserDataUiEvents.UserNameEntered(it))
+            }
+
+            Spacer(modifier = Modifier.size(30.dp))
+
+            TextComponent(
+                textValue = stringResource(id = R.string.what_do_you_like),
+                textSize = 20.sp
+            )
+            Spacer(modifier = Modifier.size(15.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                AnimalCard(
+                    imgVector = Icons.Outlined.AccountCircle,
+                    imgDescription = stringResource(id = R.string.cat),
+                    true
+                )
+                AnimalCard(
+                    imgVector = Icons.Outlined.AccountBox,
+                    imgDescription = stringResource(id = R.string.dog),
+                    true
+                )
             }
         }
     }
