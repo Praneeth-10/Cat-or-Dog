@@ -2,6 +2,7 @@ package com.lucifer.catordog.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -108,12 +109,16 @@ fun TextInputComponent(labelName: String, onEventChange: (value: String) -> Unit
 
 
 @Composable
-fun AnimalCard(imgVector: ImageVector, imgDescription: String = "Testing", selected: Boolean) {
+fun AnimalCard(imgVector: ImageVector, imgDescription: String = "Testing", selected: Boolean, animalSelected : (animalName:String)->Unit) {
     Card(
         shape = RoundedCornerShape(10.dp),
         modifier = Modifier
             .padding(24.dp)
-            .size(130.dp),
+            .size(130.dp)
+            .clickable {
+                val animalName = if (imgVector == Icons.Outlined.AccountCircle) "Cat" else "Dog"
+                animalSelected(animalName)
+            },
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
         Box(
@@ -127,7 +132,8 @@ fun AnimalCard(imgVector: ImageVector, imgDescription: String = "Testing", selec
             contentAlignment = Alignment.Center
         ) {
             Image(
-                modifier = Modifier.size(100.dp),
+                modifier = Modifier
+                    .size(100.dp),
                 imageVector = imgVector,
                 contentDescription = imgDescription
             )
@@ -151,5 +157,5 @@ fun TopAppBarPreview() {
 @Preview
 @Composable
 fun AnimalCardPrev() {
-    AnimalCard(Icons.Outlined.AccountCircle, selected = true)
+    AnimalCard(Icons.Outlined.AccountCircle, selected = true){"Dog"}
 }

@@ -1,14 +1,14 @@
 package com.lucifer.catordog.viewModels
 
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.lucifer.catordog.models.UserDataUiEvents
 import com.lucifer.catordog.models.UserInputScreenState
 
 class UserInputViewModel : ViewModel() {
     private var uiState = mutableStateOf(UserInputScreenState())
+
+    var uiIs = uiState
 
     fun onEventChanged(event: UserDataUiEvents) {
         when (event) {

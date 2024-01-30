@@ -81,13 +81,17 @@ fun UserInputScreen(
                 AnimalCard(
                     imgVector = Icons.Outlined.AccountCircle,
                     imgDescription = stringResource(id = R.string.cat),
-                    true
-                )
+                    selected = userInputViewModel.uiIs.value.animalSelected == "Cat"
+                ){
+                    userInputViewModel.onEventChanged(UserDataUiEvents.AnimalEntered(it))
+                }
                 AnimalCard(
                     imgVector = Icons.Outlined.AccountBox,
                     imgDescription = stringResource(id = R.string.dog),
-                    true
-                )
+                    selected = userInputViewModel.uiIs.value.animalSelected == "Dog"
+                ){
+                    userInputViewModel.onEventChanged(UserDataUiEvents.AnimalEntered(it))
+                }
             }
         }
     }
