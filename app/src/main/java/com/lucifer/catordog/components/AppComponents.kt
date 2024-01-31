@@ -17,6 +17,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.outlined.AccountCircle
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -151,6 +152,16 @@ fun TopAppBarPreview() {
         TextComponent(textValue = "hi  Testing", textSize = 24.sp)
         TextInputComponent(labelName = "Entering", onEventChange = {
         })
+    }
+}
+
+@Composable
+fun ButtonComponent() {
+    Button(modifier = Modifier.fillMaxWidth(),
+        onClick = { 
+            /*TODO*/
+        }) {
+        TextComponent(textValue = stringResource(id = R.string.go_to_detail), textSize = 16.sp )
     }
 }
 
