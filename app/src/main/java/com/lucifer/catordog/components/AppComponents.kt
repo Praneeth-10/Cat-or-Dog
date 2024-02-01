@@ -80,9 +80,9 @@ fun TextComponent(textValue: String, textSize: TextUnit, textColor: Color = Colo
 }
 
 @Composable
-fun TextInputComponent(labelName: String, onEventChange: (value: String) -> Unit) {
+fun TextInputComponent(valueIs : String,labelName: String, onEventChange: (value: String) -> Unit) {
     var currentValue by remember {
-        mutableStateOf("")
+        mutableStateOf(valueIs)
     }
 
     val lFocus = LocalFocusManager.current
@@ -110,14 +110,27 @@ fun TextInputComponent(labelName: String, onEventChange: (value: String) -> Unit
 
 
 @Composable
-fun AnimalCard(imgVector: ImageVector, imgDescription: String = "Testing", selected: Boolean, animalSelected : (animalName:String)->Unit) {
+fun AnimalCard(
+    imgVector: ImageVector,
+    imgDescription: String = "Testing",
+    selected: Boolean,
+    animalSelected: (animalName: String) -> Unit
+) {
+
+    val lFocus = LocalFocusManager.current
+
     Card(
         shape = RoundedCornerShape(10.dp),
         modifier = Modifier
             .padding(24.dp)
             .size(130.dp)
             .clickable {
-                val animalName = if (imgVector == Icons.Outlined.AccountCircle) "Cat" else "Dog"
+                val animalName =
+                    if (imgVector == Icons.Outlined.AccountCircle)
+                        "Cat"
+                    else
+                        "Dog"
+                lFocus.clearFocus()
                 animalSelected(animalName)
             },
         elevation = CardDefaults.cardElevation(4.dp)
@@ -151,22 +164,26 @@ fun TopAppBarPreview() {
         TopAppBar("Hi, There")
         TextComponent(textValue = "hi  Testing", textSize = 24.sp)
         TextInputComponent(labelName = "Entering", onEventChange = {
-        })
+        }, valueIs = "some value")
     }
 }
 
 @Composable
-fun ButtonComponent() {
+fun ButtonComponent(goToDetailScreen: () -> Unit) {
     Button(modifier = Modifier.fillMaxWidth(),
-        onClick = { 
-            /*TODO*/
+        onClick = {
+            goToDetailScreen()
         }) {
-        TextComponent(textValue = stringResource(id = R.string.go_to_detail), textSize = 16.sp )
+        TextComponent(
+            textValue = stringResource(id = R.string.go_to_detail),
+            textSize = 16.sp,
+            textColor = Color.White
+        )
     }
 }
 
 @Preview
 @Composable
 fun AnimalCardPrev() {
-    AnimalCard(Icons.Outlined.AccountCircle, selected = true){"Dog"}
+    AnimalCard(Icons.Outlined.AccountCircle, selected = true) { "Dog" }
 }

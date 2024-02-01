@@ -20,10 +20,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.lucifer.catordog.R
+import com.lucifer.catordog.Routes
 import com.lucifer.catordog.components.AnimalCard
+import com.lucifer.catordog.components.ButtonComponent
 import com.lucifer.catordog.components.TextComponent
 import com.lucifer.catordog.components.TextInputComponent
 import com.lucifer.catordog.components.TopAppBar
@@ -32,7 +34,7 @@ import com.lucifer.catordog.viewModels.UserInputViewModel
 
 @Composable
 fun UserInputScreen(
-    navController: NavController,
+    navController: NavHostController,
     userInputViewModel: UserInputViewModel = viewModel()
 ) {
     Surface(
@@ -62,7 +64,7 @@ fun UserInputScreen(
 
             Spacer(modifier = Modifier.size(50.dp))
 
-            TextInputComponent(labelName = "Enter Nam") {
+            TextInputComponent(labelName = "Enter Nam", valueIs = userInputViewModel.uiIs.value.nameEntered) {
                 userInputViewModel.onEventChanged(event = UserDataUiEvents.UserNameEntered(it))
             }
 
@@ -82,17 +84,26 @@ fun UserInputScreen(
                     imgVector = Icons.Outlined.AccountCircle,
                     imgDescription = stringResource(id = R.string.cat),
                     selected = userInputViewModel.uiIs.value.animalSelected == "Cat"
-                ){
+                ) {
                     userInputViewModel.onEventChanged(UserDataUiEvents.AnimalEntered(it))
                 }
                 AnimalCard(
                     imgVector = Icons.Outlined.AccountBox,
                     imgDescription = stringResource(id = R.string.dog),
                     selected = userInputViewModel.uiIs.value.animalSelected == "Dog"
-                ){
+                ) {
                     userInputViewModel.onEventChanged(UserDataUiEvents.AnimalEntered(it))
                 }
             }
+
+            Spacer(modifier = Modifier.weight(1f))
+
+            if (userInputViewModel.isValidState()){
+                ButtonComponent(goToDetailScreen = {
+                    navController.navigate(Routes.WELCOME_SCREEN)
+                })
+            }
+
         }
     }
 }
