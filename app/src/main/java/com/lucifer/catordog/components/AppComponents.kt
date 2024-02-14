@@ -172,6 +172,7 @@ fun TopAppBarPreview() {
 fun ButtonComponent(goToDetailScreen: () -> Unit) {
     Button(modifier = Modifier.fillMaxWidth(),
         onClick = {
+
             goToDetailScreen()
         }) {
         TextComponent(

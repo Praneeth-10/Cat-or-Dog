@@ -20,6 +20,7 @@ fun WelcomeScreen(
     navHostController: NavHostController,
     userInputViewModel: UserInputViewModel = viewModel()
 ) {
+    val nameEntered = userInputViewModel.uiIs.value.nameEntered
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -29,10 +30,11 @@ fun WelcomeScreen(
                 .fillMaxSize()
                 .padding(18.dp)
         ) {
+
             TopAppBar(
-                stringResource(
+                strVal = stringResource(
                     id = R.string.welcome,
-                    userInputViewModel.uiIs.value.nameEntered + " \\uD83D\\uDE0A"
+                    "$nameEntered \uD83D\uDE0A "
                 )
             )
 
