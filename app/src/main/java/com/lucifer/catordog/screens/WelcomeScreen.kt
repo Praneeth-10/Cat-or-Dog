@@ -6,9 +6,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -16,7 +13,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.lucifer.catordog.R
 import com.lucifer.catordog.components.TopAppBar
-import com.lucifer.catordog.models.UserInputScreenState
 import com.lucifer.catordog.viewModels.UserInputViewModel
 
 @Composable
@@ -24,7 +20,7 @@ fun WelcomeScreen(
     navHostController: NavHostController,
     userInputViewModel: UserInputViewModel = viewModel()
 ) {
-    val nameEntered by userInputViewModel.uiState
+    val nameEntered = userInputViewModel.uiIs.value.nameEntered
     Surface(
         modifier = Modifier
             .fillMaxSize()

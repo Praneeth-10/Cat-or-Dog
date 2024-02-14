@@ -6,7 +6,7 @@ import com.lucifer.catordog.models.UserDataUiEvents
 import com.lucifer.catordog.models.UserInputScreenState
 
 class UserInputViewModel : ViewModel() {
-    val uiState = mutableStateOf(UserInputScreenState())
+    private val uiState = mutableStateOf(UserInputScreenState())
 
     var uiIs = uiState
 

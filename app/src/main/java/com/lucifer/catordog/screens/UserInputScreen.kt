@@ -100,6 +100,8 @@ fun UserInputScreen(
 
             if (userInputViewModel.isValidState()){
                 ButtonComponent(goToDetailScreen = {
+                    println("===================Going to")
+                    println("=================== ${userInputViewModel.uiIs.value.nameEntered} and ${userInputViewModel.uiIs.value.animalSelected}")
                     navController.navigate(Routes.WELCOME_SCREEN)
                 })
             }
