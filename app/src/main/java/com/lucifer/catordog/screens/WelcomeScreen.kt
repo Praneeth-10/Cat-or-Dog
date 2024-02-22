@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.lucifer.catordog.R
+import com.lucifer.catordog.components.ButtonComponent
 import com.lucifer.catordog.components.TopAppBar
 import com.lucifer.catordog.viewModels.UserInputViewModel
 
@@ -39,6 +40,11 @@ fun WelcomeScreen(
             )
 
             Text(text = "Welcome Screen")
+
+            ButtonComponent {
+                navHostController.popBackStack()
+//                navHostController.navigate(Routes.USER_INPUT_SCREEN)
+            }
         }
     }
 
