@@ -31,7 +31,6 @@ fun WelcomeScreen(
                 .fillMaxSize()
                 .padding(18.dp)
         ) {
-
             TopAppBar(
                 strVal = stringResource(
                     id = R.string.welcome,
