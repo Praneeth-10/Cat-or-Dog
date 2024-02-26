@@ -19,7 +19,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.lucifer.catordog.R
@@ -35,7 +34,8 @@ import com.lucifer.catordog.viewModels.UserInputViewModel
 @Composable
 fun UserInputScreen(
     navController: NavHostController,
-    userInputViewModel: UserInputViewModel = viewModel()
+    userInputViewModel: UserInputViewModel,
+    showWelcomeScreen : (values : Pair<String,String>) -> Unit
 ) {
     Surface(
         modifier = Modifier
@@ -113,5 +113,5 @@ fun UserInputScreen(
 @Preview
 @Composable
 fun UserInputScreenPrev() {
-    UserInputScreen(rememberNavController())
+//    UserInputScreen(rememberNavController(), viewModel())
 }
