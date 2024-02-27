@@ -35,7 +35,7 @@ import com.lucifer.catordog.viewModels.UserInputViewModel
 fun UserInputScreen(
     navController: NavHostController,
     userInputViewModel: UserInputViewModel,
-    showWelcomeScreen : (values : Pair<String,String>) -> Unit
+    showWelcomeScreen: (values: Pair<String, String>) -> Unit
 ) {
     Surface(
         modifier = Modifier
@@ -64,7 +64,10 @@ fun UserInputScreen(
 
             Spacer(modifier = Modifier.size(50.dp))
 
-            TextInputComponent(labelName = "Enter Nam", valueIs = userInputViewModel.uiIs.value.nameEntered) {
+            TextInputComponent(
+                labelName = "Enter Nam",
+                valueIs = userInputViewModel.uiIs.value.nameEntered
+            ) {
                 userInputViewModel.onEventChanged(event = UserDataUiEvents.UserNameEntered(it))
             }
 
@@ -98,12 +101,18 @@ fun UserInputScreen(
 
             Spacer(modifier = Modifier.weight(1f))
 
-            if (userInputViewModel.isValidState()){
+            if (userInputViewModel.isValidState()) {
                 ButtonComponent(goToDetailScreen = {
                     println("===================Going to")
                     println("=================== ${userInputViewModel.uiIs.value.nameEntered} and ${userInputViewModel.uiIs.value.animalSelected}")
                     navController.navigate(Routes.WELCOME_SCREEN)
                 })
+                showWelcomeScreen(
+                    Pair(
+                        userInputViewModel.uiIs.value.nameEntered,
+                        userInputViewModel.uiIs.value.animalSelected,
+                    )
+                )
             }
 
         }
