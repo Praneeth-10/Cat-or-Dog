@@ -1,11 +1,13 @@
 package com.lucifer.catordog.screens
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -22,6 +24,11 @@ fun WelcomeScreen(
     userInputViewModel: UserInputViewModel = viewModel()
 ) {
     val nameEntered = userInputViewModel.uiIs.value.nameEntered
+    LaunchedEffect(key1 = nameEntered) {
+//      AnimatedVisibility(visible = true) {
+//
+//      }
+    }
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -32,10 +39,7 @@ fun WelcomeScreen(
                 .padding(18.dp)
         ) {
             TopAppBar(
-                strVal = stringResource(
-                    id = R.string.welcome,
-                    "$nameEntered \uD83D\uDE0A "
-                )
+                strVal = stringResource(id = R.string.welcome).plus("$nameEntered \uD83D\uDE0A ")
             )
 
             Text(text = "Welcome Screen")
@@ -44,6 +48,7 @@ fun WelcomeScreen(
                 navHostController.popBackStack()
 //                navHostController.navigate(Routes.USER_INPUT_SCREEN)
             }
+
         }
     }
 
