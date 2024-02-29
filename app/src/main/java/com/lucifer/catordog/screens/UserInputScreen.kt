@@ -34,8 +34,7 @@ import com.lucifer.catordog.viewModels.UserInputViewModel
 @Composable
 fun UserInputScreen(
     navController: NavHostController,
-    userInputViewModel: UserInputViewModel,
-    showWelcomeScreen: (values: Pair<String, String>) -> Unit
+    userInputViewModel: UserInputViewModel
 ) {
     Surface(
         modifier = Modifier
@@ -107,12 +106,6 @@ fun UserInputScreen(
                     println("=================== ${userInputViewModel.uiIs.value.nameEntered} and ${userInputViewModel.uiIs.value.animalSelected}")
                     navController.navigate(Routes.WELCOME_SCREEN)
                 })
-                showWelcomeScreen(
-                    Pair(
-                        userInputViewModel.uiIs.value.nameEntered,
-                        userInputViewModel.uiIs.value.animalSelected,
-                    )
-                )
             }
 
         }

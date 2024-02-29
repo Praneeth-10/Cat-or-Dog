@@ -35,11 +35,7 @@ fun FunFactsApp(
         composable(Routes.USER_INPUT_SCREEN) {
             UserInputScreen(
                 navController = navCon,
-                userInputViewModel = userInpViewModel,
-                showWelcomeScreen = {
-                    println(it.second)
-                    println(it.first)
-                }
+                userInputViewModel = userInpViewModel
             )
         }
         composable(Routes.WELCOME_SCREEN) {
