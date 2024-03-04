@@ -49,6 +49,8 @@ fun WelcomeScreen(
             Card {
                 Text(text = "$nameEntered have selected $animalEntered")
             }
+            println("I guess everything just works out, let's see")
+
             ButtonComponent {
                 navHostController.popBackStack()
 //                navHostController.navigate(Routes.USER_INPUT_SCREEN)
