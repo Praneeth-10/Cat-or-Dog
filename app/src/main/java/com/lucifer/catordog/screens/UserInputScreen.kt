@@ -69,9 +69,7 @@ fun UserInputScreen(
             ) {
                 userInputViewModel.onEventChanged(event = UserDataUiEvents.UserNameEntered(it))
             }
-
             Spacer(modifier = Modifier.size(30.dp))
-
             TextComponent(
                 textValue = stringResource(id = R.string.what_do_you_like),
                 textSize = 20.sp
