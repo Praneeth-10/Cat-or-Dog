@@ -1,5 +1,6 @@
 package com.lucifer.catordog.screens
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -104,6 +105,7 @@ fun UserInputScreen(
                     println("=================== ${userInputViewModel.uiIs.value.nameEntered} and ${userInputViewModel.uiIs.value.animalSelected}")
                     navController.navigate(Routes.WELCOME_SCREEN)
                     println("hellen keller============= is blind")
+                    Log.d("Test","Leaving User Input Screen Activity")
                 })
             }
 

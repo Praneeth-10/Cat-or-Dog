@@ -1,6 +1,7 @@
 package com.lucifer.catordog
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
@@ -30,7 +31,7 @@ fun FunFactsApp(
     navCon: NavHostController = rememberNavController(),
     userInpViewModel: UserInputViewModel = viewModel()
 ) {
-
+    Log.d("Test","Main Activity entered")
     NavHost(navController = navCon, startDestination = Routes.USER_INPUT_SCREEN) {
         composable(Routes.USER_INPUT_SCREEN) {
             UserInputScreen(
