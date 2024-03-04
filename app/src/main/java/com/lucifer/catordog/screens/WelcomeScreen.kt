@@ -4,6 +4,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Card
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,6 +25,7 @@ fun WelcomeScreen(
     userInputViewModel: UserInputViewModel = viewModel()
 ) {
     val nameEntered = userInputViewModel.uiIs.value.nameEntered
+    val animalEntered = userInputViewModel.uiIs.value.animalSelected
     LaunchedEffect(key1 = nameEntered) {
 //      AnimatedVisibility(visible = true) {
 //
@@ -44,6 +46,9 @@ fun WelcomeScreen(
 
             Text(text = "Welcome Screen")
 
+            Card {
+                Text(text = "$nameEntered have selected $animalEntered")
+            }
             ButtonComponent {
                 navHostController.popBackStack()
 //                navHostController.navigate(Routes.USER_INPUT_SCREEN)
