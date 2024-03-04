@@ -30,6 +30,7 @@ fun WelcomeScreen(
 //      AnimatedVisibility(visible = true) {
 //
 //      }
+        println("=======Testing from remote /other user")
     }
     Surface(
         modifier = Modifier
