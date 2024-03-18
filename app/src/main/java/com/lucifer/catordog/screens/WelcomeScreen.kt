@@ -1,9 +1,10 @@
 package com.lucifer.catordog.screens
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Card
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -12,10 +13,13 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.lucifer.catordog.R
 import com.lucifer.catordog.components.ButtonComponent
+import com.lucifer.catordog.components.TextComponent
+import com.lucifer.catordog.components.TextWithShadow
 import com.lucifer.catordog.components.TopAppBar
 import com.lucifer.catordog.viewModels.UserInputViewModel
 
@@ -42,10 +46,16 @@ fun WelcomeScreen(
                 .padding(18.dp)
         ) {
             TopAppBar(
-                strVal = stringResource(id = R.string.welcome).plus("$nameEntered \uD83D\uDE0A ")
+                strVal = stringResource(id = R.string.welcome).plus("$nameEntered \uD83D\uDE0D ")
             )
 
-            Text(text = "Welcome Screen")
+            TextComponent(textValue = "Thank You! For Sharing your Data", textSize = 24.sp)
+
+            Spacer(modifier = Modifier.size(50.dp))
+
+            val finalText = "You are a $animalEntered lover ${if (animalEntered =="Dog") "\uD83D\uDC30" else "\uD83D\uDC36" }"
+
+            TextWithShadow(value = finalText)
 
             Card {
                 Text(text = "$nameEntered have selected $animalEntered")
